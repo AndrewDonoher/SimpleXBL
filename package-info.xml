@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>JBlaze:SimpleXBL</id>
+	<name>SimpleXBL</name>
+	<version>1.0.4</version>
+	<type>modification</type>
+
+	<install for="2.0 RC3, 2.0 RC4, 2.0 RC5">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+
+		<database>install.php</database>
+
+		<modification format="xml" type="file">install.xml</modification>
+		<modification format="xml" type="file">language/english.xml</modification>
+
+		<require-file name="simplexbl-license.txt" destination="$boarddir" />
+		<require-file name="source/Subs-XboxLeaders.php" destination="$sourcedir" />
+		<require-file name="source/XboxLeaders.php" destination="$sourcedir" />
+		<require-file name="template/XboxLeaders.template.php" destination="$themedir" />
+
+		<require-dir name="xbl" destination="$imagesdir" />
+		<require-dir name="scripts/overlib" destination="$themedir/scripts" />
+
+		<redirect url="?action=admin;area=modsettings;sa=xboxleaders">redirect.txt</redirect>
+	</install>
+
+	<uninstall for="2.0 RC3, 2.0 RC4, 2.0 RC5">
+		<database>install.php</database>
+
+		<modification format="xml" type="file" reverse="true">install.xml</modification>
+		<modification format="xml" type="file" reverse="true">language/english.xml</modification>
+
+		<remove-file name="$boarddir/simplexbl-license.txt" />
+		<remove-file name="$sourcedir/Subs-XboxLeaders.php" />
+		<remove-file name="$sourcedir/XboxLeaders.php" />
+		<remove-file name="$themedir/XboxLeaders.template.php" />
+
+		<remove-dir name="$imagesdir/xbl" />
+		<remove-dir name="$themedir/scripts/overlib" />
+	</uninstall>
+
+</package-info>

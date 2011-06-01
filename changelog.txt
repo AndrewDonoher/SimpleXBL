@@ -1,0 +1,46 @@
+Legend
+===================================
+! Bugfix
++ New Feature
+- Removed Feature
+^ Feature Modified
+> New Language Added
+===================================
+- 1.0.4.patch
+	! Fixed data gathering to use official API
+	! Minor bugfixes
+
+- 1.0.4
+	! Rewrote data fetcher due to Xbox.com redesign
+	! Fixed a few minor bugs
+	- Removed 'zones' due to Xbox.com redesign
+
+- 1.0.3
+	! Fixed bug from new xbox.com update
+	! Fixed lack of permissions
+	^ Added database compatibility updates to make 1.1 upgrading easier
+
+- 1.0.2
+	! Minor bugfixes
+	^ Updated for 2.0 RC4
+
+- 1.0.1
+	! Fixed 'xbl_admin_info' error
+	^ Spruced up the leaderboard look
+	! Fixed inability to set a limit for gamers on each page
+
+- 1.0 Final
+	! Fixed bug when removing gamertag that would return a fatal error.
+
+- 1.0 RC2
+	! Fixed typo with default subaction
+	! Fixed bug that will add more than 5 games per gamer
+	! Fixed template loading error
+	^ Modified external links to open in new window
+	^ Added gamerscore icon
+	^ Added support for more subactions later
+
+- 1.0 RC1
+	! Fixed small query problems
+	! Fixed double gamertag entries
+	! Fixed error when privacy settings enabled

@@ -1,0 +1,3 @@
+Thank you for installing the SimpleXBL modification by JBlaze!
+
+You can now go to the admin panel and set up some settings. More customization will be coming in future releases!
