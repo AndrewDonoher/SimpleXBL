@@ -2,28 +2,7 @@
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 	<id>JBlaze:SimpleXBL</id>
-	<version>1.0.4</version>
-
-	<file name="$boarddir/index.php">
-		<operation>
-			<search position="replace"><![CDATA[		'.xml' => array('News.php', 'ShowXmlFeed'),]]></search>
-			<add><![CDATA[		'.xml' => array('News.php', 'ShowXmlFeed'),
-		'xboxleaders' => array('XboxLeaders.php', 'XboxLeaders'),]]></add>
-		</operation>
-	</file>
-
-	<file name="$sourcedir/Admin.php">
-		<operation>
-			<search position="after"><![CDATA[						// Note the comma!! The setting with automatically appear with the first mod to be added.]]></search>
-			<add><![CDATA[
-						'xboxleaders' => array($txt['xbox_leaders']),]]></add>
-		</operation>
-		<operation>
-			<search position="before"><![CDATA[		// Mod authors if you want to be "real freaking good" then add any setting pages for your mod BELOW this line!]]></search>
-			<add><![CDATA[
-		array('ModifyXboxLeadersSettings', 'area=modsettings;sa=xboxleaders'),]]></add>
-		</operation>
-	</file>
+	<version>1.0.5</version>
 
 	<file name="$sourcedir/Load.php">
 		<operation>
@@ -48,63 +27,6 @@
 			'xbl_admin' => array(false, 'simplexbl', 'simplexbl'),
 			'xbl_access_lb' => array(false, 'simplexbl', 'simplexbl'),
 			'xbl_add_gamertag' => array(false, 'simplexbl', 'simplexbl'),]]></add>
-		</operation>
-	</file>
-
-	<file name="$sourcedir/ManageSettings.php">
-		<operation>
-			<search position="before"><![CDATA[		// Mod authors, once again, if you have a whole section to add do it AFTER this line, and keep a comma at the end.]]></search>
-			<add><![CDATA[
-		'xboxleaders' => 'ModifyXboxLeadersSettings',]]></add>
-		</operation>
-		<operation>
-			<search position="end" />
-			<add><![CDATA[
-function ModifyXboxLeadersSettings($return_config = false)
-{
-	global $txt, $scripturl, $context, $settings, $sc, $modSettings;
-
-	// Make sure we can be here
-	isAllowedTo('xbl_admin');
-
-	$config_vars = array(
-		array('check', 'xbl_enable'),
-		array('int', 'xbl_items_page', 'subtext' => $txt['xbl_items_page_sub']),
-		array('int', 'xbl_required_posts', 'subtext' => $txt['xbl_required_posts_sub']),
-		array('int', 'xbl_user_timeout', 'subtext' => $txt['xbl_user_timeout_sub']),
-		array('check', 'xbl_show_unranked', 'subtext' => $txt['xbl_show_unranked_sub']),
-		array('int', 'xbl_stat_limit', 'subtext' => $txt['xbl_stat_limit_sub']),
-	'',
-		array('text', 'xbl_gtag_image_path', 'subtext' => $txt['xbl_gtag_image_path_sub']),
-		array('text', 'xbl_game_image_path', 'subtext' => $txt['xbl_game_image_path_sub']),
-		array('text', 'xbl_gtag_image_url', 'subtext' => $txt['xbl_gtag_image_url_sub']),
-		array('text', 'xbl_game_image_url', 'subtext' => $txt['xbl_game_image_url_sub']),
-	);
-
-	if ($return_config)
-		return $config_vars;
-
-	$context['post_url'] = $scripturl . '?action=admin;area=modsettings;save;sa=xboxleaders';
-	$context['settings_title'] = $txt['mods_cat_modifications_misc'];
-
-	if (empty($config_vars))
-	{
-		$context['settings_save_dont_show'] = true;
-		$context['settings_message'] = '<div class="centertext">' . $txt['modification_no_misc_settings'] . '</div>';
-
-		return prepareDBSettingContext($config_vars);
-	}
-
-	if (isset($_GET['save']))
-	{
-		checkSession();
-		$save_vars = $config_vars;
-		saveDBSettings($save_vars);
-		redirectexit('action=admin;area=modsettings;sa=xboxleaders');
-	}
-	prepareDBSettingContext($config_vars);
-}
-]]></add>
 		</operation>
 	</file>
 
@@ -136,7 +58,7 @@ function ModifyXboxLeadersSettings($return_config = false)
 		}
 		elseif ($key == 'gamertag' && empty($_POST['gamertag']))
 		{
-			require_once($sourcedir . '/Subs-XboxLeaders.php');
+			require_once($sourcedir . '/Subs-SimpleXBL.php');
 			xblDeleteMember($context['id_member']);
 		}
 
@@ -146,78 +68,6 @@ function ModifyXboxLeadersSettings($return_config = false)
 			<search position="before"><![CDATA[			'icq', 'aim', 'msn', 'yim', 'hr',]]></search>
 			<add><![CDATA[
 			'gamertag', 'hr',]]></add>
-		</operation>
-	</file>
-
-	<file name="$sourcedir/ScheduledTasks.php">
-		<operation>
-			<search position="end" />
-			<add><![CDATA[
-
-function scheduled_update_gamertags()
-{
-	global $txt, $sourcedir, $scripturl, $smcFunc, $modSettings, $context;
-
-	require_once($sourcedir . '/Subs-XboxLeaders.php');
-
-	// The time right now. For consistency.
-	$time = time();
-
-	// This is a little confusing...
-	$query = '
-		SELECT mem.id_member, mem.posts, mem.last_login, mem.gamertag, xbl.*
-		FROM {db_prefix}members AS mem
-			LEFT JOIN {db_prefix}xbox_leaders AS xbl ON (xbl.id_member = mem.id_member)
-		WHERE mem.gamertag != \'\'
-			AND mem.posts >= {int:required_posts}
-			AND mem.last_login >= {int:user_timeout}
-			AND (xbl.updated IS NULL OR DATE_FORMAT( FROM_UNIXTIME( xbl.updated ), \'%Y-%m-%d\' ) != \'' . date("Y-m-d", $time) . '\')
-		ORDER BY
-			xbl.updated ASC,
-			mem.id_member ASC
-		';
-
-	$params = array(
-		'required_posts' => !empty($modSettings['xbl_required_posts']) ? $modSettings['xbl_required_posts'] : 0,
-		'user_timeout' => $time - ($modSettings['xbl_user_timeout'] * 86400),
-	);
-
-	$full_result = $smcFunc['db_query']('', $query, $params);
-	$query_limit = ceil($smcFunc['db_num_rows']($full_result) / ceil((strtotime(date('Y-m-d', strtotime('+1 day'))) - $time) / 60)) + 5;
-	$smcFunc['db_free_result']($full_result);
-
-	// Now make the final queries needed
-	$request = $smcFunc['db_query']('', $query . 'LIMIT 0, ' . $query_limit, $params);
-
-	while ($row = $smcFunc['db_fetch_assoc']($request))
-	{
-		$url = 'http://api.xboxleaders.com/newapi.php?gamertag=' . str_replace(' ', '%20', $row['gamertag']) . '&format=json';
-
-		$card = getXboxLiveData(file_get_contents($url), $row);
-
-		if ($card !== false)
-			xblUpdateMember($card);
-	}
-	$smcFunc['db_free_result']($request);
-
-	return true;
-}
-
-]]></add>
-		</operation>
-	</file>
-
-	<file name="$sourcedir/Subs.php">
-		<operation>
-			<search position="after"><![CDATA[			'calendar' => array(]]></search>
-			<add><![CDATA[			'xboxleaders' => array(
-				'title' => $txt['xbox_leaders'],
-				'href' => $scripturl . '?action=xboxleaders',
-				'show' => !empty($modSettings['xbl_enable']) && allowedTo('xbl_access_lb'),
-				'sub_buttons' => array(
-				),
-			),
-]]></add>
 		</operation>
 	</file>
 

@@ -1,7 +1,7 @@
-[size=16pt]SimpleXBL 1.0.4[/size]
+[size=16pt]SimpleXBL 1.0.5[/size]
 [hr]
 [b]Created by:[/b] JBlaze
-[b]Compatible:[/b] SMF 2.0 RC5
+[b]Compatible:[/b] SMF 2.0
 [b]Languages:[/b] [img]http://www.jblaze.net/images/flags/us.png[/img] [img]http://www.jblaze.net/images/flags/gb.png[/img]
 [hr]
 
