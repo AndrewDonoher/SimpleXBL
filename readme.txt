@@ -1,7 +1,7 @@
-[size=16pt]SimpleXBL 1.0.5[/size]
+[size=16pt]SimpleXBL 1.0.4[/size]
 [hr]
 [b]Created by:[/b] JBlaze
-[b]Compatible:[/b] SMF 2.0
+[b]Compatible:[/b] SMF 2.0 RC4
 [b]Languages:[/b] [img]http://www.jblaze.net/images/flags/us.png[/img] [img]http://www.jblaze.net/images/flags/gb.png[/img]
 [hr]
 
@@ -28,4 +28,4 @@ SimpleXBL allows members to post their Xbox LIVE Gamertag to a leaderboard on a 
 1. There are no upgrade packages provided. To upgrade, be sure to remove previous versions. You can keep the database date, but uninstall the package.
 
 [size=14pt][i]Support[/i][/size]
-For best support, please visit http://community.xboxleaders.com/
+For best support, please visit http://xboxleaders.com/community/

@@ -6,12 +6,6 @@ Legend
 ^ Feature Modified
 > New Language Added
 ===================================
-- 1.0.5
-	! Fixed data gathering to use official API
-	+ Rewritten in OOP
-	! Most file modifications removed and replaced with integration hooks
-	! Minor bugfixes
-
 - 1.0.4
 	! Rewrote data fetcher due to Xbox.com redesign
 	! Fixed a few minor bugs
