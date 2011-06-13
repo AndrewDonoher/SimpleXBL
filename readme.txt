@@ -20,6 +20,11 @@ SimpleXBL allows members to post their Xbox LIVE Gamertag to a leaderboard on a 
 [li]Control over how often the leaderboard will update, and what it should update.[/li]
 [/list]
 
+[size=14pt][i]Requirements[/i][/size]
+- PHP 5.2+
+- JSON Library
+- iconv or UTF-8 encoding
+
 [size=14pt][i]Installation[/i][/size]
 1. Upload to your forum using the built-in Package Manager.
 2. Install using the built-in Package Manager.

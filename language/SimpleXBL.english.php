@@ -2,11 +2,13 @@
 // Version 2.0; SimpleXBL
 
 $txt['simplexbl'] = 'SimpleXBL';
+$txt['simplexbl_desc'] = 'SimpleXBL is a simple Xbox LIVE Leaderboard solution for your community.';
 $txt['xbl_top_stats'] = 'Top Statistics';
 $txt['xbl_profile_label'] = 'Xbox Gamertag';
 $txt['xbl_profile_subtext'] = 'Your Xbox LIVE Gamertag';
 $txt['xbl_leaders_title'] = 'Xbox LIVE Leaderboard';
 $txt['xbl_no_data'] = 'No data to display!';
+$txt['powered_by'] = 'Powered by';
 
 $txt['xbl_header_member'] = 'Member';
 $txt['xbl_header_gamertag'] = 'Gamertag';
@@ -47,6 +49,7 @@ $txt['xbl_show_unranked'] = 'Show unranked Gamertags?';
 $txt['xbl_show_unranked_sub'] = 'If checked, Gamertags with a Gamerscore of 0 will be included in leaderboard.';
 $txt['xbl_stat_limit'] = 'Number of top stats to show';
 $txt['xbl_stat_limit_sub'] = 'This is the number of top stats for each section to show. Default is 5.';
+$txt['xbl_menu_title'] = 'Custom Navbar Title (ex. Xbox Leaders)';
 $txt['xbl_game_image_path'] = 'Game Images Path';
 $txt['xbl_game_image_path_sub'] = 'This is the path that all game images will be stored.';
 $txt['xbl_game_image_url'] = 'Game Images Directory';

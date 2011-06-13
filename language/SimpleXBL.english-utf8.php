@@ -2,11 +2,13 @@
 // Version 2.0; SimpleXBL
 
 $txt['simplexbl'] = 'SimpleXBL';
+$txt['simplexbl_desc'] = 'SimpleXBL is a simple Xbox LIVE Leaderboard solution for your community.';
 $txt['xbl_top_stats'] = 'Top Statistics';
 $txt['xbl_profile_label'] = 'Xbox Gamertag';
 $txt['xbl_profile_subtext'] = 'Your Xbox LIVE Gamertag';
 $txt['xbl_leaders_title'] = 'Xbox LIVE Leaderboard';
 $txt['xbl_no_data'] = 'No data to display!';
+$txt['powered_by'] = 'Powered by';
 
 $txt['xbl_header_member'] = 'Member';
 $txt['xbl_header_gamertag'] = 'Gamertag';

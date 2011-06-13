@@ -69,7 +69,7 @@ function template_leaderboard()
 	<span class="lowerframe"><span></span></span>';
 
 	echo '<div class="smalltext" align="center">
-		Powered by <a href="http://community.xboxleaders.com/">SimpleXBL v', SimpleXBL::version, '</a>
+		Powered by <a href="http://community.xboxleaders.com/">SimpleXBL</a>
 	</div>';
 
 	echo '

@@ -10,6 +10,7 @@
 		<readme type="file" parsebbc="true">readme.txt</readme>
 
 		<database>install.php</database>
+		<code>add_settings.php</code>
 
 		<modification format="xml" type="file">install.xml</modification>
 
@@ -18,8 +19,6 @@
 		<require-file name="language/SimpleXBL.english.php" destination="$languagedir" />
 		<require-file name="language/SimpleXBL.english-utf8.php" destination="$languagedir" />
 
-		<require-dir name="sxbl/games" destination="$boarddir/sxbl" />
-		<require-dir name="sxbl/gamers" destination="$boarddir/sxbl" />
 		<require-dir name="xbl" destination="$imagesdir" />
 
 		<redirect url="?action=admin;area=simplexbl">redirect.txt</redirect>
@@ -27,6 +26,7 @@
 
 	<uninstall for="2.0">
 		<database>install.php</database>
+		<code>remove_settings.php</code>
 
 		<modification format="xml" type="file" reverse="true">install.xml</modification>
 
@@ -36,7 +36,6 @@
 		<remove-file name="$languagedir/SimpleXBL.english-utf8.php" />
 
 		<remove-dir name="$imagesdir/xbl" />
-		<remove-dir name="$boarddir/sxbl" />
 	</uninstall>
 
 </package-info>
