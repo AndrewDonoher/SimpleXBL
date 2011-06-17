@@ -58,8 +58,8 @@
 		}
 		elseif ($key == 'gamertag' && empty($_POST['gamertag']))
 		{
-			require_once($sourcedir . '/Subs-SimpleXBL.php');
-			xblDeleteMember($context['id_member']);
+			require_once($sourcedir . '/SimpleXBL.php');
+			sxbl_delete_member($context['id_member']);
 		}
 
 ]]></add>
