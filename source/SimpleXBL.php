@@ -102,7 +102,7 @@ function sxblAdminAreas( &$admin_areas )
 		array( 'simplexbl' => array(
 			'label' => $txt['simplexbl'],
 			'function' => create_function( NULL, 'ModifySimpleXBLSettings();' ),
-			'icon' => 'configuration.gif',
+			'icon' => 'maintain.gif',
 			'subsections' => array(
 			),
 		) ),
@@ -231,7 +231,8 @@ function Leaderboard()
 {
 	global $context, $txt, $scripturl, $sourcedir, $settings, $modSettings;
 
-	isAllowedTo( 'xbl_access_lb' );
+	if ( !allowedTo( 'xbl_access_lb' ) )
+		fatal_lang_error( 'no_access' );
 
 	/* Stats */
 	$context['xbl_stats_basic'] = sxbl_stats_basic();
@@ -479,7 +480,7 @@ function sxbl_get_data( $string, $member )
 		$player['link']				= $data['user']['profile_link'];
 		$player['gamertag']			= $data['user']['gamertag'];
 		$player['avatar']			= $data['user']['avatars']['gamer_tile'];
-		$player['reputation']		= $data['user']['reputation'] / 5;
+		$player['reputation']		= $data['user']['reputation'] !== 0 ? $data['user']['reputation'] / 5 : 0; // No division by zero!
 		$player['gamerscore']		= $data['user']['gamerscore'];
 		$player['location']			= $data['user']['location'];
 		$player['motto']			= $data['user']['motto'];

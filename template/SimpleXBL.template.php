@@ -20,20 +20,22 @@ function template_leaderboard()
 		<div id="upshrinkHeaderXBLS"', empty( $options['collapse_header_xbls'] ) ? '' : ' style="display: none;"', '>
 			<table class="table_grid" width="100%">
 			<thead>
-				<th class="smalltext" align="center">', $txt['xbl_stats_overall'], '</th>
-				<th class="smalltext" align="center">', $txt['xbl_stats_players'], '</th>
-				<th class="smalltext" align="center">', $txt['xbl_stats_avatars'], '</th>
-				<th class="smalltext" align="center">', $txt['xbl_stats_games'], '</th>
+				<tr>
+					<th class="smalltext" align="center">', $txt['xbl_stats_overall'], '</th>
+					<th class="smalltext" align="center">', $txt['xbl_stats_players'], '</th>
+					<th class="smalltext" align="center">', $txt['xbl_stats_avatars'], '</th>
+					<th class="smalltext" align="center">', $txt['xbl_stats_games'], '</th>
+				</tr>
 			</thead>
 			<tbody>
 				<tr class="windowbg">
 					<td valign="top" width="20%" nowrap="nowrap">
-						<div class="smalltext" width="100%"><span style="float: right;">', $context['xbl_stats_basic']['members'], '</span>', $txt['xbl_total_players'], ':</div>
-						<div class="smalltext" width="100%"><span style="float: right;"><img src="', $settings['images_url'] . '/xbl/gs.png" height="10" width="10" alt="" /> ', $context['xbl_stats_basic']['score'], '</span>', $txt['xbl_total_gamerscore'], ':</div>
-						<div class="smalltext" width="100%"><span style="float: right;"><img src="', $settings['images_url'], '/xbl/', $context['xbl_stats_basic']['reputation'], '.png" alt="" title="', $txt['xbl_total_reputation'], ': ', $context['xbl_stats_basic']['reputation'], '" /></span>', $txt['xbl_total_reputation'], ':</div>
-						<div class="smalltext" width="100%"><span style="float: right;">', $context['xbl_stats_basic']['gold'], '</span>', $txt['xbl_total_gold'], ':</div>
-						<div class="smalltext" width="100%"><span style="float: right;">', $context['xbl_stats_basic']['silver'], '</span>', $txt['xbl_total_silver'], ':</div>
-						<div class="smalltext" width="100%"><span style="float: right;">', $context['xbl_stats_basic']['gamescount'], '</span>', $txt['xbl_total_games'], ':</div>
+						<div class="smalltext" style="width: 100%;"><span style="float: right;">', $context['xbl_stats_basic']['members'], '</span>', $txt['xbl_total_players'], ':</div>
+						<div class="smalltext" style="width: 100%;"><span style="float: right;"><img src="', $settings['images_url'] . '/xbl/gs.png" height="10" width="10" alt="" /> ', $context['xbl_stats_basic']['score'], '</span>', $txt['xbl_total_gamerscore'], ':</div>
+						<div class="smalltext" style="width: 100%;"><span style="float: right;"><img src="', $settings['images_url'], '/xbl/', $context['xbl_stats_basic']['reputation'], '.png" alt="" title="', $txt['xbl_total_reputation'], ': ', $context['xbl_stats_basic']['reputation'], '" /></span>', $txt['xbl_total_reputation'], ':</div>
+						<div class="smalltext" style="width: 100%;"><span style="float: right;">', $context['xbl_stats_basic']['gold'], '</span>', $txt['xbl_total_gold'], ':</div>
+						<div class="smalltext" style="width: 100%;"><span style="float: right;">', $context['xbl_stats_basic']['silver'], '</span>', $txt['xbl_total_silver'], ':</div>
+						<div class="smalltext" style="width: 100%;"><span style="float: right;">', $context['xbl_stats_basic']['gamescount'], '</span>', $txt['xbl_total_games'], ':</div>
 					</td>
 					<td valign="top" width="20%" nowrap="nowrap">';
 
@@ -50,14 +52,16 @@ function template_leaderboard()
 					<td width="20%" align="center">';
 
 			foreach ( $context['xbl_stats_avatars'] as $avatar )
-				echo '<img border="0" height="32" width="32" src="', $avatar['avatar'], '" alt="" title="', sprintf( $txt['xbl_by_players'], $avatar['count'] ), '" /> ';
+				echo '
+						<img border="0" height="32" width="32" src="', $avatar['avatar'], '" alt="" title="', sprintf( $txt['xbl_by_players'], $avatar['count'] ), '" /> ';
 
 		echo '
 					</td>
 					<td width="20%" align="center">';
 
 			foreach ( $context['xbl_stats_games'] as $game )
-				echo '<a target="_blank" href="', $game['link'], '"><img border="0" height="32" width="32" src="', $game['image'], '" alt="" title="', $game['title'], ': ', sprintf( $txt['xbl_by_players'], $game['count'] ), '" /></a> ';
+				echo '
+						<a target="_blank" href="', $game['link'], '"><img border="0" height="32" width="32" src="', $game['image'], '" alt="" title="', $game['title'], ': ', sprintf( $txt['xbl_by_players'], $game['count'] ), '" /></a> ';
 
 		echo '
 					</td>
@@ -68,7 +72,8 @@ function template_leaderboard()
 	</div></div>
 	<span class="lowerframe"><span></span></span>';
 
-	echo '<div class="smalltext" align="center">
+	echo '
+	<div class="smalltext" align="center">
 		Powered by <a href="http://community.xboxleaders.com/">SimpleXBL</a>
 	</div>';
 
