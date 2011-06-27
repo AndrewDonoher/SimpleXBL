@@ -41,7 +41,8 @@ function template_leaderboard()
 
 			foreach ( $context['xbl_stats_players'] as $player )
 			{
-				echo '<div class="smalltext" width="100%">
+				echo '
+					<div class="smalltext" style="width: 100%;">
 						<span style="float: right;"><img src="', $settings['images_url'] . '/xbl/gs.png" height="10" width="10" alt="" /> ', comma_format( $player['gamerscore'] ), '</span>
 						<a href="', $scripturl, '?action=profile;u=', $player['id_member'], '">', $player['gamertag'], '</a>
 					</div>';
