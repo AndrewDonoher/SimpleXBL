@@ -384,7 +384,7 @@ function Leaderboard()
 								<img src="\' . $settings[\'images_url\'] . \'/xbl/user.png" alt="" />
 							</a> <a target="_blank" href="http://live.xbox.com/en-US/MessageCenter/Compose?gamertag=\' . $rowData[\'gamertag\'] . \'" title="\' . $txt[\'xbl_send_msg\'] . \'">
 								<img src="\' . $settings[\'images_url\'] . \'/xbl/message.png" alt="" />
-							</a> \' . ($user_info[\'is_admin\'] ? \'<a href="\' . $scripturl . \'?action=xboxleaders;sa=delete;id=\' . $rowData[\'id_member\'] . \';\' . $context[\'session_var\'] . \'=\' . $context[\'session_id\'] . \'" title="\' . $txt[\'xbl_delete\'] . \'">
+							</a> \' . ($user_info[\'is_admin\'] ? \'<a href="\' . $scripturl . \'?action=simplexbl;sa=delete;id=\' . $rowData[\'id_member\'] . \';\' . $context[\'session_var\'] . \'=\' . $context[\'session_id\'] . \'" title="\' . $txt[\'xbl_delete\'] . \'">
 								<img src="\' . $settings[\'images_url\'] . \'/xbl/delete.png" alt="" />
 							</a>\' : \'\');
 
